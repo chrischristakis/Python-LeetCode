@@ -1,29 +1,43 @@
-class Queue:
+class MyQueue(object):
+
     def __init__(self):
-        self.queue = []  # stack
+        self.queue = []
 
-    def enqueue(self, val):
-        self.queue.append(val)
+    def push(self, x):
+        self.queue.append(x)
 
-    def dequeue(self):
+    def pop(self):
         reverse = []
         while len(self.queue) != 0:
             reverse.append(self.queue.pop())
-        front = reverse.pop()
+
+        popped = reverse.pop()
         while len(reverse) != 0:
             self.queue.append(reverse.pop())
-        return front
+        return popped
+
+    def peek(self):
+        reverse = []
+        while len(self.queue) != 0:
+            reverse.append(self.queue.pop())
+
+        peeked = reverse[-1]  # no peek, but if there was a stack we could just use .peek() here
+        while len(reverse) != 0:
+            self.queue.append(reverse.pop())
+        return peeked
+
+    def empty(self):
+        return not bool(self.queue)
 
     def __repr__(self):
-        return str(self.queue)
+        return "FRONT -> " + str(self.queue) + " <- BACK"
 
 
-queue = Queue()
-queue.enqueue(1)
-queue.enqueue(2)
-queue.enqueue(3)
-queue.enqueue(4)
-print(queue)
-print(queue.dequeue())
-print(queue.dequeue())
-print(queue)
+# Your MyQueue object will be instantiated and called as such:
+obj = MyQueue()
+obj.push(1)
+obj.push(2)
+print(obj)
+print(obj.peek())
+obj.pop()
+
