@@ -16,9 +16,27 @@ def two_sum2(nums, target):
         diff = target - nums[i]
 
         if nums[i] in table:
-            return [table[nums[i]], i]
+            return [table[nums[i]], nums[i]]
 
-        table[diff] = i
+        table[diff] = nums[i]
+
+
+def two_sum_two_pointer(nums, target):
+    left = 0
+    right = len(nums) - 1
+
+    # sort array, O(n log n)
+    nums.sort()
+
+    while left < right:
+        summ = nums[left] + nums[right]
+        if summ > target:
+            right -= 1
+        elif summ < target:
+            left += 1
+        else:  # sum == target:
+            return [nums[left], nums[right]]
+    return None
 
 
 print(two_sum2([2, 7, 11, 15], 9))
