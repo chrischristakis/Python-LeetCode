@@ -39,6 +39,6 @@ def two_sum_two_pointer(nums, target):
     return None
 
 
-print(two_sum2([2, 7, 11, 15], 9))
-print(two_sum2([3, 2, 4], 6))
-print(two_sum2([3, 3], 6))
+print(two_sum1([2, 7, 11, 15], 9))
+print(two_sum1([3, 2, 4], 6))
+print(two_sum1([3, 3], 6))
