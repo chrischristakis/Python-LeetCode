@@ -39,8 +39,3 @@ def dp_word_break(s, word_dict):
 func = dp_word_break
 print(func("applepenapple", ["apple","pen"]))
 print(func("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab", ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]))
-
-
-
-st = 'hello'
-print(st[4:len('leet')])
