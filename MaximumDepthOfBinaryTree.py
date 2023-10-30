@@ -12,8 +12,7 @@ def max_depth(root):
     def inner(node, depth):
         if node is None:
             return depth
-        depth += 1
-        return max(inner(node.left, depth), inner(node.right, depth))
+        return max(inner(node.left, depth + 1), inner(node.right, depth + 1))
     return inner(root, 0)
 
 
