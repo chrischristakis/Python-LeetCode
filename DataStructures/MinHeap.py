@@ -7,6 +7,11 @@ class MinHeap:
         for i in range(len(self.heap) - 1, -1, -1):
             self.heapify_down(i)
 
+    def peek(self):
+        if len(self.heap) == 0:
+            return None
+        return self.heap[-1]
+
     def lookup(self, val):
         for i in range(0, len(self.heap)):
             if self.heap[i] == val:
