@@ -1,0 +1,34 @@
+def calculate(s):
+    total = 0
+    num = ''
+    sign = 1
+    stack = []
+
+    for c in s:
+        if c == ' ':
+            continue
+
+        if c.isdigit():
+            num += c
+
+        if c in ['-', '+']:
+            total += sign * (int(num) if num != '' else 0)
+            num = ''
+            sign = 1 if c == '+' else -1
+
+        if c == '(':
+            stack.append(total)
+            stack.append(sign)
+            sign = 1
+            num = ''
+            total = 0
+
+        if c == ')':
+            total += sign * (int(num) if num != '' else 0)
+            total *= stack.pop()
+            total += stack.pop()
+            num = ''
+
+    return total + sign * (int(num) if num != '' else 0)
+
+print(calculate("-(3 + 4)"))
