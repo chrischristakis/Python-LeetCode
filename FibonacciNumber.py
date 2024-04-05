@@ -27,3 +27,7 @@ def iter_fib(n):
 
 
 print(fibonacci(100))
+
+
+for i in range(2, 3):
+    print(i)
