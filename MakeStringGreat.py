@@ -11,3 +11,6 @@ def makeGood(self, s):
                 break
 
     return ''.join(stack)
+
+
+print('hi'[0:1])
