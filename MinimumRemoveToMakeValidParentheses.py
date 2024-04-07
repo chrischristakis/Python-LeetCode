@@ -1,18 +1,42 @@
-def minRemoveToMakeValid(s):
-    open_par = []  # tracks indices of open parentheses
-    split = list(s)
-    for i, c in enumerate(split):
+def checkValidString(s):
+    def recurse(i, curr='', count=0):
+        if i == len(s):
+            return count == 0
+
+        if s[i] == '(':
+            return recurse(i + 1, curr + '(', count + 1)
+        elif s[i] == ')':
+            if count < 0:
+                return False
+            return recurse(i + 1, curr + ')', count - 1)
+        else:
+            return recurse(i + 1, curr + '(', count + 1) or \
+                   recurse(i + 1, curr + ')', count - 1) or \
+                   recurse(i + 1, curr, count)
+
+    return recurse(0)
+
+
+def checkValidString(s):
+    open = []
+    stars = []
+    for i, c in enumerate(s):
         if c == '(':
-            open_par.append(i)
-        if c == ')':
-            if open_par:  # resolve an open parenthesis
-                open_par.pop()
-            else:  # can't 'afford' closing parenthesis, remove it froms string
-                split[i] = ''
+            open.append(i)
+        elif c == ')':
+            if open:
+                open.pop()
+            elif stars:
+                stars.pop()
+            else:
+                return False
+        else:
+            stars.append(i)
 
-    # remove unresolved open parenthesis
-    while open_par:
-        top = open_par.pop()
-        split[top] = ''
+    while open and stars:
+        if open[-1] > stars[-1]:
+            return False
+        open.pop()
+        stars.pop()
 
-    return ''.join(split)
+    return len(open) == 0
