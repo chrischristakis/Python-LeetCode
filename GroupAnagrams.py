@@ -12,7 +12,21 @@ def group_anagrams(strs):
         res.append(words)
     return res
 
+def better_anagrams(strs):
+    res = {}
+    for s in strs:
+        counter = [0] * 26
+        for c in s:
+            counter[ord(c) - ord('a')] += 1
 
-print(group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
-print(group_anagrams([""]))
+        key = tuple(counter)  # counter becomes immutable, thus hashable
+        if key in res:
+            res[key].append(s)
+        else:
+            res[key] = [s]
+    return res.values()
+
+
+print(better_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+print(better_anagrams([""]))
 
